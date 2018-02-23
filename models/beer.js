@@ -10,7 +10,12 @@ let beerSchema = mongoose.Schema({
     abvMin: String,
     abvMax: String,
     ibuMin: String,
-    ibuMax: String
+    ibuMax: String,
+    featuredName: String,
+    featuredBrewery: String,
+    featuredLink: String,
+    rating: Number,
+    notes: []
 });
 
 let Beer = module.exports = mongoose.model('Beer', beerSchema);

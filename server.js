@@ -51,6 +51,28 @@ app.get('/beerNode', function(req,res){
 });
 });
 
+app.put('/beerUpdate', function(req, res) {
+    Beer.findOne({ 'beerId': 'cQMfwv' }).then(function(beer) {
+        beer.rating = req.body.rating;
+        beer.save(function(err, updatedBeer) {
+            if (err) return handleError(err);
+            res.send(updatedBeer);
+        })
+    })
+
+})
+
+app.put('/noteUpdate', function(req, res) {
+    Beer.findOne({ 'beerId': 'cQMfwv' }).then(function(beer) {
+        console.log(req.body.note); 
+        beer.save(function(err, updatedBeer) {
+            if (err) return handleError(err);
+            res.send(updatedBeer);
+        })
+    })
+
+})
+
 app.listen(3000, function() {
     console.log("connected to port 3000");
 });
