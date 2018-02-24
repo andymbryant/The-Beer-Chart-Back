@@ -45,10 +45,10 @@ app.get('/beer/:token', function(req,res){
   })
 });
 
-app.get('/beerNode', function(req,res){
-  Beer.findOne({ 'beerId': 'cQMfwv' }).then(function(beer) {
+app.get('/beerNode/:id', function(req,res){
+  Beer.findOne({ 'beerId': req.params.id }).then(function(beer) {
     res.send(beer);
-});
+    })
 });
 
 app.put('/beerUpdate', function(req, res) {
@@ -64,7 +64,7 @@ app.put('/beerUpdate', function(req, res) {
 
 app.put('/noteUpdate', function(req, res) {
     Beer.findOne({ 'beerId': 'cQMfwv' }).then(function(beer) {
-        console.log(req.body.note); 
+        console.log(req.body.note);
         beer.save(function(err, updatedBeer) {
             if (err) return handleError(err);
             res.send(updatedBeer);
