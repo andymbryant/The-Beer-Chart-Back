@@ -11,9 +11,11 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "brewerydb-node": "0.0.1",
+    "connect-mongo": "^2.0.1",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-router": "0.0.1",
+    "express-session": "^1.15.6",
     "jsonwebtoken": "^8.1.1",
     "mongodb": "^3.0.2",
     "mongoose": "^5.0.6",

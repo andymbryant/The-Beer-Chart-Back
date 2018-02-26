@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(cors());
 
+app.use(bodyParser.json());
+
 require('./models').connect(config.dbUri);
 
 // const mongoDB = 'mongodb://localhost:27017/beer';
@@ -35,6 +37,7 @@ app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
 let Beer = require('./models/beer');
+let User = require('./models/user')
 
 app.get('/beerId/:beerId', function(req,res){
   brewdb.beer.getById(req.params.beerId, {}, function(err, beer) {
@@ -67,6 +70,11 @@ app.get('/beerNode/:id', function(req,res){
     res.send(beer);
     })
 });
+
+
+app.put('/stars', function(req, res) {
+    console.log('this person is logged in');
+  })
 
 
 // Set Port, hosting services will look for process.env.PORT
