@@ -14,8 +14,7 @@ let beerSchema = mongoose.Schema({
     featuredName: String,
     featuredBrewery: String,
     featuredLink: String,
-    rating: Number,
-    notes: []
+    rating: Number
 });
 
 let Beer = module.exports = mongoose.model('Beer', beerSchema);

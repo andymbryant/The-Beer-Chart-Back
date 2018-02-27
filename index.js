@@ -72,11 +72,6 @@ app.get('/beerNode/:id', function(req,res){
 });
 
 
-app.put('/stars', function(req, res) {
-    console.log('this person is logged in');
-  })
-
-
 // Set Port, hosting services will look for process.env.PORT
 app.set('port', (process.env.PORT || 3000));
 
