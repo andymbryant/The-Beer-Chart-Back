@@ -9,8 +9,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: String,
   name: String,
-  data: {},
-  rating: {}
+  data: {}
 });
 
 

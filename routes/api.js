@@ -35,24 +35,33 @@ router.get('/note/:id', (req, res) => {
   })
 });
 
-router.put('/stars/:id', function(req, res) {
-  const beerId = req.params.id;
-  const entityId = req.user._id;
-  const string = `rating.${beerId}`;
-  User.findByIdAndUpdate(entityId, {$set: {[string]: Object.keys(req.body)}}, function(err, user) {
-        if (err) console.log(err);
-    })
+router.delete('/deleteNote/:id', (req, res) => {
+    const beerId = req.params.id;
+    // const note = req.body;
+    console.log(req.body);
+    // User.remove({ beerId : })
 })
 
-router.get('/stars/:id', function(req, res) {
-    const beerId = req.params.id;
-    User.findOne({'email': req.user.email}, function(err, user) {
-      if (err) console.log(err);
-      res.status(200).json({
-        rating: parseInt(user.rating[beerId])
-      })
-    })
-})
+// router.put('/stars/:id', function(req, res) {
+//   const beerId = req.params.id;
+//   const entityId = req.user._id;
+//   const string = `rating.${beerId}`;
+//   User.findByIdAndUpdate(entityId, {$set: {[string]: Object.keys(req.body)}}, function(err, user) {
+//         if (err) console.log(err);
+//     })
+// })
+//
+// router.get('/stars/:id', function(req, res) {
+//     const beerId = req.params.id;
+//     User.findOne({'email': req.user.email}, function(err, user) {
+//       if (err) console.log(err);
+//       res.status(200).json({
+//         rating: parseInt(user.rating[beerId])
+//       })
+//     })
+// })
+
+
 
 
 module.exports = router;

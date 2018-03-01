@@ -13,8 +13,7 @@ let beerSchema = mongoose.Schema({
     ibuMax: String,
     featuredName: String,
     featuredBrewery: String,
-    featuredLink: String,
-    rating: Number
+    featuredLink: String
 });
 
 let Beer = module.exports = mongoose.model('Beer', beerSchema);
