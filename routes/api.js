@@ -25,22 +25,38 @@ router.post('/note/:id', (req, res) => {
 })
 
 router.get('/note/:id', (req, res) => {
-  const beerId = req.params.id;
-
-  User.findOne({'email': req.user.email}, function(err, user) {
-    if (err) console.log(err);
-    res.status(200).json({
-      note: user.data[beerId]
-    })
-  })
+    const beerId = req.params.id;
+    const entityId = req.user._id;
+        User.findById(entityId, function(err, user) {
+            if (err) console.log(err);
+                res.status(200).json({
+                    note: user.data[beerId]
+                })
+    // res.status(200).json({
+    //   note: user.data[beerId]
+    // })
+        })
 });
 
-router.delete('/deleteNote/:id', (req, res) => {
+router.delete('/deleteNotes', (req, res) => {
     const beerId = req.params.id;
-    // const note = req.body;
-    console.log(req.body);
-    // User.remove({ beerId : })
+    const entityId = req.user._id;
+    const note = req.body[0];
+    User.findByIdAndUpdate(entityId,
+        { $set: { data: {} }}, function (err, user) {
+      if (err) return handleError(err);
+      console.log('delete notes ran');
+    });
+    // res.status(200).json({
+    //     note: 'Add your notes here.'
+    // })
 })
+
+    // User.remove({ beerId : note}, function(err, user) {
+    //     if (err) console.log(err);
+    //     console.log(user);
+    // })
+
 
 // router.put('/stars/:id', function(req, res) {
 //   const beerId = req.params.id;

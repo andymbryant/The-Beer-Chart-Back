@@ -9,8 +9,9 @@ const UserSchema = new mongoose.Schema({
   },
   password: String,
   name: String,
-  data: {}
-});
+  data: { type: mongoose.Schema.Types.Mixed, default: {} }
+ }, { minimize: false }
+);
 
 
 /**
