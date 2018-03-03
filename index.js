@@ -16,10 +16,6 @@ app.use(bodyParser.json());
 
 require('./models').connect(config.dbUri);
 
-// const mongoDB = 'mongodb://localhost:27017/beer';
-// mongoose.connect(mongoDB);
-// mongoose.Promise = global.Promise;
-
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -79,14 +75,3 @@ app.set('port', (process.env.PORT || 3000));
 app.listen(app.get('port'), () => {
   console.log(`Server is running on port ${app.get('port')}`);
 });
-
-
-// app.use(express.static('./server/static/'));
-// app.use(express.static('./client/dist/'));
-
-
-
-// pass the authenticaion checker middleware
-
-
-// routes
