@@ -1,4 +1,4 @@
 {
-  "dbUri": "mongodb://user:password@ds155268.mlab.com:55268/heroku_qdq8bldw",
+  "dbUri": "mongodb://andy:bryanta1@ds155268.mlab.com:55268/heroku_qdq8bldw",
   "jwtSecret": "secret"
 }
