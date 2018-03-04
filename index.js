@@ -35,41 +35,37 @@ app.use('/api', apiRoutes);
 let Beer = require('./models/beer');
 let User = require('./models/user')
 
-app.get('/beerId/:beerId', function(req,res){
-  brewdb.beer.getById(req.params.beerId, {}, function(err, beer) {
-    if(err) {
-        console.error(err);
-        res.status(500).send("An error occurred");
-    } else if(beer) {
-        res.send(beer);
-    } else{
-        res.status(404).send('We could not find your beer');
-    }
-  })
-});
-
-app.get('/beer/:token', function(req,res){
-  brewdb.search.beers({q: req.params.token}, function(err, beer) {
-    if(err) {
-        console.error(err);
-        res.status(500).send("An error occurred");
-    } else if(beer) { // we found the beer
-        res.send(beer);
-    } else{
-        res.status(404).send('We could not find your beer');
-    }
-  })
-});
+// app.get('/beerId/:beerId', function(req,res){
+//   brewdb.beer.getById(req.params.beerId, {}, function(err, beer) {
+//     if(err) {
+//         console.error(err);
+//         res.status(500).send("An error occurred");
+//     } else if(beer) {
+//         res.send(beer);
+//     } else{
+//         res.status(404).send('We could not find your beer');
+//     }
+//   })
+// });
+//
+// app.get('/beer/:token', function(req,res){
+//   brewdb.search.beers({q: req.params.token}, function(err, beer) {
+//     if(err) {
+//         console.error(err);
+//         res.status(500).send("An error occurred");
+//     } else if(beer) { // we found the beer
+//         res.send(beer);
+//     } else{
+//         res.status(404).send('We could not find your beer');
+//     }
+//   })
+// });
 
 app.get('/beerNode/:id', function(req,res){
   Beer.findOne({ 'beerId': req.params.id }).then(function(beer) {
     res.send(beer);
     })
 });
-
-// app.get('/', function(req, res) {
-//   console.log('this loaded');
-// })
 
 // Set Port, hosting services will look for process.env.PORT
 app.set('port', (process.env.PORT || 3000));
